@@ -1,0 +1,38 @@
+Student Panel:
+
+- registration page
+- login page
+- 3 buttons
+    mark attendance
+    request leave
+    view attendance
+- Cannot remark or delete the attendance once it is marked
+- option to edit profile picture
+- send leave request to admin
+
+
+Admin Panel:
+
+- admin login page
+- view attendance of each student
+- add, edit and delete student attendance
+- create attendance report FROM and TO dates of specific user
+- proper count of leaves, presents and absents
+- leave approval
+- grading system based on presents
+
+
+Database Columns:
+
+admin login:
+- admin_email
+- admin_password
+
+students:
+- student_id
+- student_name
+- student_email
+- student_password
+- student_subject
+- student_photo
+- admission_date

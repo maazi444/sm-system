@@ -2,6 +2,7 @@
 include("../includes/connection.php");
 session_start();
 if (isset($_SESSION['student_auth']) == "1") {
+    $studentName = $_SESSION['student_name'];
 ?>
 
     <!DOCTYPE html>
@@ -29,36 +30,32 @@ if (isset($_SESSION['student_auth']) == "1") {
                     <div class="col-md-12 border-bottom border-alert">
                         <h4>Dashboard</h4>
                     </div>
-                    <div class="row py-3 dashboard-cards">
+                    <h5 class="mt-3"><i class="fi fi-rr-star mx-2"></i>This Month Statistics</h5>
+                    <div class="row py-1 dashboard-cards">
                         <!-- Card 1 -->
                         <div class="col-md-3 mx-md-2 my-2 py-3 d-flex bg-primary rounded d-flex flex-md-row justify-content-around">
                             <div>
                                 <h1 class="text-light">25</h1>
-                                <p class="text-light">Total Students</p>
+                                <p class="text-light">Presents</p>
                             </div>
                             <i class="fi fi-rr-user"></i>
                         </div>
                         <!-- Card 2 -->
-                        <div class="col-md-3 mx-md-2 my-2 py-3 d-flex bg-success rounded d-flex flex-md-row justify-content-around">
-                            <div>
-                                <h1 class="text-light">19</h1>
-                                <p class="text-light">Present Today</p>
-                            </div>
-                            <i class="fi fi-rr-check"></i>
-                        </div>
-                        <!-- Card 3 -->
                         <div class="col-md-3 mx-md-2 my-2 py-3 d-flex bg-warning rounded d-flex flex-md-row justify-content-around">
                             <div>
                                 <h1 class="text-light">3</h1>
-                                <p class="text-light">Leave Requests</p>
+                                <p class="text-light">Leaves</p>
                             </div>
                             <i class="fi fi-rr-edit"></i>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="col-md-8">
-                            <h5><i class="fi fi-rr-link-alt mx-2"></i>Quick Links</h5>
-                            <a href="#" class="d-quick-links d-inline-block p-3 text-light rounded"><i class="fi fi-rr-document-signed mx-2"></i>Generate Attendance Report</a>
+                            <h5 class="mb-4"><i class="fi fi-rr-id-badge mx-2"></i>Manage Attendance</h5>
+                            <a href="#" class="bg-primary d-inline-block p-3 text-light rounded mx-2"><i class="fi fi-rr-check mx-2"></i>Mark Present</a>
+                            <a href="#" class="bg-success d-inline-block p-3 text-light rounded mx-2"><i class="fi fi-rr-paper-plane mx-2"></i>Request Leave</a>
+                            <a href="#" class="bg-secondary d-inline-block p-3 text-light rounded mx-2"><i class="fi fi-rr-book-alt mx-2"></i>View Attendance</a>
+                            
                         </div>
                         <div class="col-md-4"></div>
                     </div>
