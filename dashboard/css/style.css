@@ -1,0 +1,27 @@
+*{
+    text-decoration: none !important;
+}
+
+.dashboard-outer{
+    min-height: 100vh !important;
+}
+
+.menu-links a:hover{
+    transition: 0.2s ease-in;
+    color: #ffe600 !important;
+}
+
+.dashboard-cards i{
+    font-size: 60px;
+    color: white;
+    opacity: 0.4;
+}
+
+.d-quick-links{
+    background-color: #580668;
+    transition: 0.2s ease-in;
+}
+
+.d-quick-links:hover{
+    background-color: #350342;
+}
