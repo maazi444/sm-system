@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+    font-family: 'Raleway', sans-serif !important;
+    /* text-decoration: none !important; */
+}
+
+.main-container{
+    min-height: 100vh;
+    background-color: #f3f3f3;
+}
+
+.signin-outer{
+    border-radius: 10px;
+    box-shadow: 3px 4px 8px rgba(0,0,0,0.2);
+}
+
+.signin-input{
+    border: none;
+    border-bottom: 2px solid #757575;
+    padding: 5px;
+}
