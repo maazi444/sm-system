@@ -19,6 +19,15 @@ if (isset($_POST['login'])) {
         if (isset($record['student_email'])) {
             $_SESSION['student_auth'] = 1;
             $_SESSION['student_name'] = $record['student_name'];
+            $_SESSION['student_picture'] = "";
+            if($record['profile_picture'] == "")
+            {
+                $_SESSION['student_picture'] = "person-dummy.png";
+            }
+            else{
+                $_SESSION['student_picture'] = $record['profile_picture'];
+            }
+            $_SESSION['student_id'] = $record['id'];
         } else {
 
             header("location:index.php?login=0");
@@ -44,11 +53,11 @@ if (!isset($_SESSION['student_auth'])) {
 
     <body>
         <main class="container-fluid d-flex justify-content-center align-items-center main-container">
-            <div class="row bg-white px-3 py-5 w-50 signin-outer">
-                <div class="col-md-6">
+            <div class="row bg-white px-3 py-5 w-md-50 w-sm-75 signin-outer">
+                <div class="col-md-6 col-12">
                     <img src="./assets/signin-image.jpg" class="img-fluid" alt="Sign In Image">
                 </div>
-                <div class="col-md-6 px-2">
+                <div class="col-md-6 col-12 px-2">
                     <h1 class="fw-bold">Sign In - Student Panel</h1>
                     <form action="" method="POST" class="mt-3 d-flex flex-column align-items-start" autocomplete="off">
                         <input type="email" name="student_email" class="signin-input my-2 p-2 w-100" id="student_email" placeholder="E-mail" />
@@ -58,6 +67,7 @@ if (!isset($_SESSION['student_auth'])) {
                             $accountMsg = "Invalid email or password";
                         }
                         ?>
+                        <span class="text-danger"><?php echo $accountMsg; ?></span>
                         <input type="submit" name="login" value="Sign In" class="btn btn-primary w-100 mt-2">
                     </form>
                     <div class="w-100 text-center mt-3">
