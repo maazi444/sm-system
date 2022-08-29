@@ -1,5 +1,6 @@
 <?php
 include("./includes/connection.php");
+// connect_db();
 session_start();
 $msg = "";
 $accountMsg = "";

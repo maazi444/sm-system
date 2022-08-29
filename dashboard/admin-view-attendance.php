@@ -1,14 +1,10 @@
 <?php
 include("../includes/connection.php");
 session_start();
-if (isset($_SESSION['student_auth']) == "1") {
+if (isset($_SESSION['auth']) == "1") {
     // echo $_SESSION['student_id'];
-    $studentName = $_SESSION['student_name'];
-    $student_id = $_SESSION['student_id'];
-
-    $sql = "SELECT attendance_date from sms_attendance WHERE student_id = '$student_id'";
-    // echo $sql;
-    // exit();
+    // SELECT DISTINCT(concat(month(attendance_date),"-", YEAR(attendance_date))) from sms_attendance; 8-2022
+    //  $sql = "SELECT * from sms_attendance WHERE concat(month(attendance_date),'-', YEAR(attendance_date)) = '9-2022'";
     $row = mysqli_query($conn, $sql);
     $record = mysqli_fetch_assoc($row);
     $date = $record['attendance_date'];
