@@ -87,7 +87,7 @@ if(isset($_POST['register'])){
 
                     <label for="student_profilepic" class="form-label mt-2">Profile Picture</label>
                     <input class="form-control" type="file" name="image" id="image">
-
+                    
                     <input type="submit" name="register" value="Register" class="btn btn-primary w-100 mt-2">
 
                 </form>

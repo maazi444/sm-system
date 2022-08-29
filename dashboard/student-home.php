@@ -15,7 +15,7 @@ if (isset($_SESSION['student_auth']) == "1") {
         $attendance_status = $_POST['student_present'];
 
         $sql = "SELECT * FROM sms_attendance WHERE student_id = '$student_id' AND attendance_date = '$attendance_date'";
-        $recordset = mysqli_query(connect_db(), $sql);
+        $recordset = mysqli_query($conn, $sql);
         if (!mysqli_num_rows($recordset) > 0) {
             $sql = "INSERT INTO `sms_attendance` (`student_id`, `attendance_status`, `attendance_date`) VALUES ('$student_id', '$attendance_status', '$attendance_date')";
             mysqli_query($conn, $sql);

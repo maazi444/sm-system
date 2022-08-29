@@ -34,13 +34,12 @@ if (isset($_SESSION['auth']) == "1") {
         <main class="container-fluid">
             <div class="row dashboard-outer">
                 <?php
-                include("./includes/studentSideMenu.php");
+                include("./includes/sideMenu.php");
                 ?>
                 <div class="col-md-10">
                     <div class="col-md-12 border-bottom border-alert">
                         <h4 class="my-2"><i class="fi fi-rr-eye me-2"></i>Students | View Attendance</h4>
                     </div>
-                    <h5 class="mt-4">Current Month: <?php echo $monthName; ?></h5>
                     <table class="table table-dark table-striped w-50 text-center">
                         <thead>
                             <th scope="col">Present</th>
@@ -50,19 +49,13 @@ if (isset($_SESSION['auth']) == "1") {
                         <tbody>
                             <tr>
                                 <td>
-                                    <?php
-                                    echo countAttendance($student_id, 1);
-                                    ?>
+                                   
                                 </td>
                                 <td>
-                                    <?php
-                                    echo countAttendance($student_id, 2);
-                                    ?>
+                                    
                                 </td>
                                 <td>
-                                    <?php
-                                    echo countAttendance($student_id, 2) + countAttendance($student_id, 1);
-                                    ?>
+                                    
                                 </td>
                             </tr>
                         </tbody>

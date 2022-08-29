@@ -3,6 +3,17 @@ include("../includes/connection.php");
 session_start();
   if(isset($_SESSION['auth']) == "1")
   {
+
+    $totalStudents;
+    $sql = "SELECT * from students";
+    $row = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($row) > 0)
+    {
+        $totalStudents = mysqli_num_rows($row);
+    }
+    else{
+        $totalStudents = 0;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +22,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard = SMS</title>
+    <title>Admin Dashboard - SMS</title>
     <?php
     include("../includes/sources.php");
     ?>
@@ -33,7 +44,7 @@ session_start();
                     <!-- Card 1 -->
                     <div class="col-md-3 mx-md-2 my-2 py-3 d-flex bg-primary rounded d-flex flex-md-row justify-content-around">
                         <div>
-                            <h1 class="text-light">25</h1>
+                            <h1 class="text-light"><?php echo $totalStudents; ?></h1>
                             <p class="text-light">Total Students</p>
                         </div>
                         <i class="fi fi-rr-user"></i>

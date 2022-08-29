@@ -1,21 +1,37 @@
 <?php
 include("../includes/connection.php");
+include("../includes/countAttendance.php");
 session_start();
 if (isset($_SESSION['student_auth']) == "1") {
     // echo $_SESSION['student_id'];
     $studentName = $_SESSION['student_name'];
     $student_id = $_SESSION['student_id'];
+    $monthName = "";
 
-    $sql = "SELECT attendance_date from sms_attendance WHERE student_id = '$student_id'";
+    $currentDate = date("Y-n-d");
+    // echo $currentDate;
+    $currentDateArray = explode("-", $currentDate);
+    $currentMonth = $currentDateArray[1];
+    // echo "<br/>".$currentMonth;
+    $monthName = date('M', mktime(0, 0, 0, $currentMonth, 10));
+    // echo "<br/>".$monthName;
+
+    // $sql = "SELECT attendance_date from sms_attendance WHERE student_id = '$student_id'";
     // echo $sql;
     // exit();
-    $row = mysqli_query($conn, $sql);
-    $record = mysqli_fetch_assoc($row);
-    $date = $record['attendance_date'];
-    $dateArray = explode("-", $date);
-    $monthNumber = $dateArray[1];
-
-    $monthName = date('M', mktime(0, 0, 0, $monthNumber, 10));
+    // $row = mysqli_query($conn, $sql);
+    // if(mysqli_num_rows($row) > 0)
+    // {
+    //     $record = mysqli_fetch_assoc($row);
+    //     $date = $record['attendance_date'];
+    //     $dateArray = explode("-", $date);
+    //     $monthNumber = $dateArray[1];
+    //     $monthName = date('M', mktime(0, 0, 0, $monthNumber, 10));
+    // }
+    // else{
+    //     echo "No record Found";
+    // }
+    // exit();
 
 ?>
 
@@ -55,17 +71,17 @@ if (isset($_SESSION['student_auth']) == "1") {
                             <tr>
                                 <td>
                                     <?php
-                                    echo countAttendance($student_id, 1);
+                                    echo countAttendance($student_id, 1, $currentMonth);
                                     ?>
                                 </td>
                                 <td>
                                     <?php
-                                    echo countAttendance($student_id, 2);
+                                    echo countAttendance($student_id, 2, $currentMonth);
                                     ?>
                                 </td>
                                 <td>
                                     <?php
-                                    echo countAttendance($student_id, 2) + countAttendance($student_id, 1);
+                                    echo countAttendance($student_id, 2, $currentMonth) + countAttendance($student_id, 1, $currentMonth);
                                     ?>
                                 </td>
                             </tr>
