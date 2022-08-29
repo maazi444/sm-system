@@ -5,7 +5,7 @@ if (isset($_SESSION['student_auth']) == "1") {
     // echo $_SESSION['student_id'];
     $studentName = $_SESSION['student_name'];
     $student_id = $_SESSION['student_id'];
-    $attendance_date = date("d-m-Y");
+    $attendance_date = date("Y-n-d");
     $attendance_status;
 
     $sql = "SELECT * FROM sms_attendance WHERE student_id = '$student_id' AND attendance_date = '$attendance_date'";
@@ -28,7 +28,7 @@ if (isset($_SESSION['student_auth']) == "1") {
         $recordset = mysqli_query($conn, $sql);
         if (!mysqli_num_rows($recordset) > 0) {
             $sql = "INSERT INTO `sms_attendance` (`student_id`, `attendance_status`, `attendance_date`) VALUES ('$student_id', '$attendance_status', '$attendance_date')";
-            echo $sql;
+            mysqli_query($conn, $sql);
         }
     }
 ?>
@@ -39,7 +39,7 @@ if (isset($_SESSION['student_auth']) == "1") {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Portal</title>
+        <title>Student Dashboard - SMS</title>
 
         <?php
         include("../includes/sources.php");
@@ -108,11 +108,11 @@ if (isset($_SESSION['student_auth']) == "1") {
                                 if ($record['attendance_status'] == 1) {
                                     $attendanceStatusMsg = "Status: Present Marked";
                                 } else if ($record['attendance_status'] == 2) {
-                                    if($record['leave_status'] == "0")
+                                    if($record['leave_status'] == "1")
                                     {
                                         $attendanceStatusMsg = "Status: Leave Disapproved";
                                     }
-                                    else if($record['leave_status'] == "1")
+                                    else if($record['leave_status'] == "2")
                                     { 
                                         $attendanceStatusMsg = "Status: Leave Approved";
                                     }
@@ -138,7 +138,7 @@ if (isset($_SESSION['student_auth']) == "1") {
                             }
                             ?>
 
-                            <a href="#" class="bg-secondary d-inline-block p-3 text-light rounded mx-2"><i class="fi fi-rr-book-alt mx-2"></i>View Attendance</a>
+                            <a href="student-attendance.php" class="bg-secondary d-inline-block p-3 text-light rounded mx-2"><i class="fi fi-rr-book-alt mx-2"></i>View Attendance</a>
 
                         </div>
                         <div class="col-md-4"></div>
