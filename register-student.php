@@ -43,6 +43,7 @@ if(isset($_POST['register'])){
             $_SESSION['student_auth'] = 1;
             $_SESSION['student_name'] = $student_name;
             $_SESSION['student_id'] = $student_id;
+            $_SESSION['student_profile_picture'] = $newfilename;
             header("location:dashboard/student-home.php");
         }
     }
