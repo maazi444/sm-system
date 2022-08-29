@@ -59,7 +59,7 @@ if (!isset($_SESSION['auth'])) {
                     }
                     ?>
                     <span class="text-danger"><?php echo $accountMsg; ?></span>
-                    <input type="submit" name="login" value="Login" class="btn btn-primary w-100 mt-2">
+                    <input type="submit" name="login" value="Sign In" class="btn btn-primary w-100 mt-2">
                 </form>
                 <div class="w-100 text-center mt-3">
                     <a href="index.php" class="link-secondary text-align-center text-decoration-none"><i class="fi fi-rr-users-alt mx-2"></i>Open Student Panel</a>

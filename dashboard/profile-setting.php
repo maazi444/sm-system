@@ -22,7 +22,7 @@ if (isset($_SESSION['student_auth']) == "1") {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Student Portal</title>
+        <title>Student Profile Setting - SMS</title>
 
         <?php
         include("../includes/sources.php");
