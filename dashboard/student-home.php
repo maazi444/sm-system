@@ -95,7 +95,7 @@ if (isset($_SESSION['student_auth']) == "1") {
 
                                 <form action="" method="POST" class="d-inline-block">
                                     <input type="hidden" value="' . $_SESSION['student_id'] . '" name="student_id">
-                                    <input type="hidden" value="2" name="student_leave" />
+                                    <input type="hidden" value="3" name="student_leave" />
                                     <input type="submit" name="request-leave" class="btn btn-success p-3 text-light rounded mx-2" value="Leave Request">
                                 </form>
                                 <h6 class="mx-2 mt-2 pb-2 border-bottom"></h6>
@@ -107,20 +107,13 @@ if (isset($_SESSION['student_auth']) == "1") {
                                 $record = mysqli_fetch_array($recordset);
                                 if ($record['attendance_status'] == 1) {
                                     $attendanceStatusMsg = "Status: Present Marked";
-                                } else if ($record['attendance_status'] == 2) {
-                                    if($record['leave_status'] == "1")
-                                    {
-                                        $attendanceStatusMsg = "Status: Leave Disapproved";
-                                    }
-                                    else if($record['leave_status'] == "2")
-                                    { 
-                                        $attendanceStatusMsg = "Status: Leave Approved";
-                                    }
-                                    else
-                                    {
-                                        $attendanceStatusMsg = "Status: Leave Requested";
-                                    }
-                                }
+                                } else if ($record['attendance_status'] == 3) {
+                                    $attendanceStatusMsg = "Status: Leave Requested";
+                                } else if ($record['attendance_status'] == 4) {
+                                    $attendanceStatusMsg = "Status: Leave Approved";
+                                } else if ($record['attendance_status'] == 5) {
+                                    $attendanceStatusMsg = "Status: Leave Disapproved";
+                                }  
 
                                 $output = '
                                 <form action="" method="POST" class="d-inline-block">

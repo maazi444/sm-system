@@ -63,10 +63,7 @@ if (isset($_SESSION['auth']) == "1") {
                                     <td>' . $record['student_name'] . '</td>
                                     <td>' . $record['admission_date'] . '</td>
                                     <td>
-                                        <form action="" method="POST">
-                                        <input type="hidden" value="' . $record['id'] . '" name="student_num">
-                                        <input type="submit" class="btn btn-info" name="view-attendance" value="View Attendance">
-                                        </form>
+                                        <a href="admin-view-attendance.php?student_email='.$record['student_email'].'" class="btn btn-info">View Attendance</a>
                                     </td>';
                                 echo $output;
                             }
