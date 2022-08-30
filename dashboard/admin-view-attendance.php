@@ -57,7 +57,7 @@ if (isset($_SESSION['auth']) == "1") {
                         </thead>
                         <tbody>
                             <?php
-                                $sql = "SELECT * FROM sms_attendance WHERE student_id = $student_id";
+                                $sql = "SELECT * FROM sms_attendance WHERE student_id = $student_id ORDER BY attendance_date DESC";
                                 $dataRow = mysqli_query($conn, $sql);
                                 if(!mysqli_num_rows($dataRow) == 0)
                                 {
