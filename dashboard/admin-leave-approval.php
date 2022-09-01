@@ -39,9 +39,9 @@ if (isset($_SESSION['auth']) == "1") {
                 <?php
                 include("./includes/sideMenu.php");
                 ?>
-                <div class="col-md-10">
+                <div class="col-md-10 overflow=auto">
                     <div class="col-md-12 border-bottom border-alert">
-                        <h4 class="my-2"><i class="fi fi-rr-edit me-2"></i>Admin | Approve Leaves</h4>
+                        <h4 class="my-2"><i class="fi fi-rr-edit me-2"></i>Admin | Leave Approval</h4>
                     </div>
 
                     <div class="col-md-12 mt-4">
@@ -76,7 +76,7 @@ if (isset($_SESSION['auth']) == "1") {
                         } else {
                             ?>
                             <div class="alert alert-success w-75" role="alert">
-                                No Leave Requests till now!
+                                No Pending Leave Requests.
                             </div>
                         <?php
                         }

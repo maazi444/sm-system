@@ -36,7 +36,7 @@ if (isset($_SESSION['student_auth']) == "1") {
                 <?php
                 include("./includes/studentSideMenu.php");
                 ?>
-                <div class="col-md-10">
+                <div class="col-md-10 overflow-auto">
                     <div class="col-md-12 border-bottom border-alert">
                         <h4 class="my-2"><i class="fi fi-rr-eye me-2"></i>Students | View Attendance</h4>
                     </div>
@@ -54,7 +54,7 @@ if (isset($_SESSION['student_auth']) == "1") {
                                 <td>
                                     <?php
                                     // Present Count
-                                    echo countAttendance($student_id, 1, $currentMonth); 
+                                    echo countAttendance($student_id, 1, $currentMonth);
                                     ?>
                                 </td>
                                 <td>
@@ -82,6 +82,47 @@ if (isset($_SESSION['student_auth']) == "1") {
                                     ?>
                                 </td>
                             </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-light table-striped w-75 text-center">
+                        <thead>
+                            <th scope="col">Date (y-m-d)</th>
+                            <th scope="col">Attendance Status</th>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql = "SELECT * FROM sms_attendance WHERE student_id = $student_id ORDER BY attendance_date DESC";
+                            $dataRow = mysqli_query($conn, $sql);
+                            if (!mysqli_num_rows($dataRow) == 0) {
+                                while ($recordRow = mysqli_fetch_assoc($dataRow)) {
+                            ?>
+                                    <tr>
+                                        <td><?php echo $recordRow['attendance_date']; ?></td>
+                                        <td><?php
+                                            if ($recordRow['attendance_status'] == 1) {
+                                                echo "Present";
+                                            } else if ($recordRow['attendance_status'] == 2) {
+                                                echo "Absent";
+                                            } else if ($recordRow['attendance_status'] == 3) {
+                                                echo "Leave Requested";
+                                            } else if ($recordRow['attendance_status'] == 4) {
+                                                echo "Leave Approved";
+                                            } else if ($recordRow['attendance_status'] == 5) {
+                                                echo "Leave Disapproved";
+                                            }
+                                            ?></td>
+                                    </tr>
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="3">No Record Found</td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

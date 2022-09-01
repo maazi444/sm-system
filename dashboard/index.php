@@ -69,7 +69,9 @@ session_start();
                 <div class="col-md-12">
                     <div class="col-md-8">
                         <h5><i class="fi fi-rr-link-alt mx-2"></i>Quick Links</h5>
-                        <a href="#" class="d-quick-links d-inline-block p-3 text-light rounded"><i class="fi fi-rr-document-signed mx-2"></i>Generate Attendance Report</a>
+                        <a href="admin-attendance-report.php" class="d-quick-links d-inline-block p-3 text-light rounded"><i class="fi fi-rr-document-signed mx-2"></i>Generate Attendance Report</a>
+
+                        <a href="admin-attendance-report.php" class="d-quick-links d-inline-block p-3 text-light rounded"><i class="fi fi-rr-document-signed mx-2"></i>Generate Attendance Report</a>
                     </div>
                     <div class="col-md-4"></div>
                 </div>
