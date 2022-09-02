@@ -47,13 +47,8 @@ if (isset($_SESSION['auth']) == "1") {
                     <div class="col-md-12 mt-4">
                         <?php
                         $sql = "SELECT a.attendance_id, s.student_name, a.student_id, a.attendance_status, a.attendance_date FROM sms_attendance a, students s WHERE a.student_id = s.id AND a.attendance_status = 3";
-                        // $sql = "SELECT * FROM sms_attendance WHERE attendance_status = 3";
                         $row = mysqli_query($conn, $sql);
-                        // print_r($row);
-                        // exit();
                         if (!mysqli_num_rows($row) == 0) {
-                            // $sql = "select s.student_name, a.attendance_status, a.attendance_date from sms_attendance a, students s where a.student_id = s.id";
-                            // $recordRow = mysqli_query($conn, $sql);
                             while ($record = mysqli_fetch_assoc($row)) {
                         ?>
                                 <div class="alert alert-secondary w-75 d-flex justify-content-between align-items-center" role="alert">
@@ -75,9 +70,7 @@ if (isset($_SESSION['auth']) == "1") {
                             }
                         } else {
                             ?>
-                            <div class="alert alert-success w-75" role="alert">
-                                No Pending Leave Requests.
-                            </div>
+                            <div class="alert alert-success w-75" role="alert">No Pending Leave Requests.</div>
                         <?php
                         }
                         ?>

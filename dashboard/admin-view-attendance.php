@@ -2,11 +2,6 @@
 include("../includes/connection.php");
 session_start();
 if (isset($_SESSION['auth']) == "1") {
-    // echo $_SESSION['student_id'];
-    // SELECT DISTINCT(concat(month(attendance_date),"-", YEAR(attendance_date))) from sms_attendance; 8-2022
-    //  $sql = "SELECT * from sms_attendance WHERE concat(month(attendance_date),'-', YEAR(attendance_date)) = '9-2022'";
-
-    //$sql = select a.attendance_id, s.student_name, a.attendance_status, a.leave_status, a.attendance_date from sms_attendance a, students s where a.student_id = s.id;
     $editAttendanceId;
     $attendanceMsg = "";
     $formOutput = "";

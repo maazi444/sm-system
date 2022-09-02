@@ -10,6 +10,7 @@ include("includes/insertPicture.php");
     $studentEmailError = "";
     $studentPasswordError = "";
     $student_id;
+    $currentDate =  date("Y-n-d");
 if(isset($_POST['register'])){
     $student_name = mysqli_real_escape_string($conn, $_POST['student_name']);
     $student_email = mysqli_real_escape_string($conn, $_POST['student_email']);
@@ -39,11 +40,19 @@ if(isset($_POST['register'])){
         {
             $sql="insert into students(student_name,student_email,student_password,student_subject, profile_picture,admission_date) values('$student_name','$student_email','$student_password', '$student_subject', '$newfilename','$admission_date')";
             mysqli_query($conn, $sql);
+
+            $sql = "SELECT id FROM students WHERE student_email = '$student_email'";
+            $row = mysqli_query($conn, $sql);
+            $result = mysqli_fetch_assoc($row);
+
             $msg = "inserted";
             $_SESSION['student_auth'] = 1;
             $_SESSION['student_name'] = $student_name;
-            $_SESSION['student_id'] = $student_id;
+            $_SESSION['student_id'] = $result['id'];
+            $student_id = $result['id'];
             $_SESSION['student_profile_picture'] = $newfilename;
+            $sql = "INSERT INTO sms_attendance(student_id, attendance_status, attendance_date) VALUES($student_id, 1, '$currentDate')";
+            mysqli_query($conn, $sql);
             header("location:dashboard/student-home.php");
         }
     }

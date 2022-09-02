@@ -14,3 +14,4 @@ function countAttendance($studentId, $attendanceStatus, $currentMonth)
         return 0;
     }
 }
+

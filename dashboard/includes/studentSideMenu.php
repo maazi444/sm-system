@@ -5,7 +5,7 @@
     $dataRow = mysqli_fetch_assoc($data);
     if(!mysqli_num_rows($data)>0)
     {
-        echo $_SESSION['student_profile_picture'];
+        $student_profile_picture = $_SESSION['student_profile_picture'];
     }
     else{
         $student_profile_picture = $dataRow['profile_picture'];

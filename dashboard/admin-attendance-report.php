@@ -5,36 +5,6 @@ if (isset($_SESSION['auth']) == "1") {
     $searchOutput = "";
     $fromDate = "";
     $toDate = "";
-    // echo $_SESSION['student_id'];
-    // SELECT DISTINCT(concat(month(attendance_date),"-", YEAR(attendance_date))) from sms_attendance; 8-2022
-    //  $sql = "SELECT * from sms_attendance WHERE concat(month(attendance_date),'-', YEAR(attendance_date)) = '9-2022'";
-
-    //$sql = select a.attendance_id, s.student_name, a.attendance_status, a.leave_status, a.attendance_date from sms_attendance a, students s where a.student_id = s.id;
-
-    if (isset($_POST['attendance_search'])) {
-        $fromDate = $_POST['from_date'];
-        $toDate = $_POST['to_date'];
-        $sql = "SELECT s.student_name, a.attendance_status, a.attendance_date FROM sms_attendance a, students s WHERE a.student_id = s.id AND attendance_date BETWEEN '$fromDate' AND '$toDate'";
-        $recordRow = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($recordRow) == 0) {
-            echo '
-                    <tr>
-                        <td scope="col" rowspan="3">No Records Found</td>
-                    </tr>
-                ';
-        } else {
-            while ($record = mysqli_fetch_assoc($recordRow)) {
-                $searchOutput = '
-                    <tr>
-                        <td scope="col">' . $record['attendance_date'] . '</td>
-                        <td scope="col">' . $record['student_name'] . '</td>
-                        <td scope="col">' . $record['attendance_status'] . '</td>
-                    </tr>
-                ';
-            }
-        }
-    }
 
 ?>
 

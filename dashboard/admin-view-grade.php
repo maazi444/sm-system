@@ -2,9 +2,7 @@
 include("../includes/connection.php");
 session_start();
 if (isset($_SESSION['auth']) == "1") {
-    $currentDate = date("Y-n-d");
-    $currentDateArray = explode("-", $currentDate);
-    $currentMonth = $currentDateArray[1];
+    $currentMonth = date("n");
     $lastMonth = intval($currentMonth) - 1;
 ?>
 

@@ -5,6 +5,9 @@ if (isset($_SESSION['student_auth']) == "1") {
     // echo $_SESSION['student_id'];
     $studentName = $_SESSION['student_name'];
     $student_id = $_SESSION['student_id'];
+
+    echo $studentName."<br/>";
+    echo $student_id."<br/>";
     if(isset($_POST['change-profile']))
     {
         include("./includes/insertPicture.php");

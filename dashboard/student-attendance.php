@@ -8,9 +8,7 @@ if (isset($_SESSION['student_auth']) == "1") {
     $student_id = $_SESSION['student_id'];
     $monthName = "";
 
-    $currentDate = date("Y-n-d");
-    $currentDateArray = explode("-", $currentDate);
-    $currentMonth = $currentDateArray[1];
+    $currentMonth = date("n");
     $monthName = date('M', mktime(0, 0, 0, $currentMonth, 10));
 
 ?>

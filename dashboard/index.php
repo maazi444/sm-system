@@ -89,7 +89,7 @@ if (isset($_SESSION['auth']) == "1") {
                                                         ?></h1>
                                 <p class="text-light">Absent</p>
                             </div>
-                            <i class="fi fi-rr-user"></i>
+                            <i class="fi fi-rr-cross-circle"></i>
                         </div>
                         <!-- Card 2 -->
                         <div class="col-md-3 mx-md-2 my-2 py-3 bg-info rounded d-flex flex-md-row justify-content-around">
@@ -99,16 +99,16 @@ if (isset($_SESSION['auth']) == "1") {
                                                         ?></h1>
                                 <p class="text-dark">Leave</p>
                             </div>
-                            <i class="fi fi-rr-check text-dark"></i>
+                            <i class="fi fi-rr-notebook text-dark"></i>
                         </div>
 
                     </div>
                     <div class="col-md-12">
                         <div class="col-md-8">
                             <h5><i class="fi fi-rr-link-alt mx-2"></i>Quick Links</h5>
-                            <a href="admin-attendance-report.php" class="btn btn-outline-primary d-inline-block p-3 rounded my-2"><i class="fi fi-rr-document-signed mx-2"></i>Generate Attendance Report</a>
+                            <a href="admin-attendance-report.php" class="btn btn-outline-dark d-inline-block p-3 rounded my-2"><i class="fi fi-rr-document-signed mx-2"></i>Generate Attendance Report</a>
 
-                            <a href="admin-view-grade.php" class="btn btn-outline-info d-inline-block p-3 rounded my-2"><i class="fi fi-rr-eye mx-2"></i>View Student Grades</a>
+                            <a href="admin-view-grade.php" class="btn btn-outline-dark d-inline-block p-3 rounded my-2"><i class="fi fi-rr-eye mx-2"></i>View Student Grades</a>
                         </div>
                         <div class="col-md-4"></div>
                     </div>
@@ -121,6 +121,6 @@ if (isset($_SESSION['auth']) == "1") {
 
 <?php
 } else {
-    header("location:../admin-login.php");
+    header("location:../index.php");
 }
 ?>
