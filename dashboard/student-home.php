@@ -2,14 +2,30 @@
 include("../includes/connection.php");
 session_start();
 if (isset($_SESSION['student_auth']) == "1") {
-    // echo $_SESSION['student_id'];
-    $studentName = $_SESSION['student_name'];
-    $student_id = $_SESSION['student_id'];
-    $attendance_date = date("Y-n-d");
-    $attendance_status;
 
-    $sql = "SELECT * FROM sms_attendance WHERE student_id = '$student_id' AND attendance_date = '$attendance_date'";
-    $recordset = mysqli_query($conn, $sql);
+     $studentName = $_SESSION['student_name'];
+     $student_id = $_SESSION['student_id'];
+     $attendance_date = date("Y-n-d");
+     $attendance_status;
+    
+    function stats($query){
+        include("../includes/connection.php");
+        $attendanceDate = date("n");
+        $student_id = $_SESSION['student_id'];
+        $sql = "SELECT COUNT(*) FROM sms_attendance WHERE student_id = '$student_id' AND month(attendance_date) = '$attendanceDate' AND attendance_status = $query";
+        $recordset = mysqli_query($conn, $sql);
+        $record = mysqli_fetch_assoc($recordset);
+        return $record['COUNT(*)'];
+    }
+
+    function totalStudents(){
+        include("../includes/connection.php");
+        $student_id = $_SESSION['student_id'];
+        $sql = "SELECT COUNT(*) FROM students WHERE status = 'Active'";
+        $recordset = mysqli_query($conn, $sql);
+        $record = mysqli_fetch_assoc($recordset);
+        return $record['COUNT(*)'];
+    }
 
     if (isset($_POST['mark-present'])) {
         $attendance_status = $_POST['student_present'];
@@ -63,7 +79,9 @@ if (isset($_SESSION['student_auth']) == "1") {
                         <!-- Card 1 -->
                         <div class="col-md-3 mx-md-2 my-2 py-3 d-flex bg-primary rounded d-flex flex-md-row justify-content-around">
                             <div>
-                                <h1 class="text-light">25</h1>
+                                <h1 class="text-light"><?php
+                                                        echo stats(1);
+                                                        ?></h1>
                                 <p class="text-light">Presents</p>
                             </div>
                             <i class="fi fi-rr-user"></i>
@@ -71,10 +89,12 @@ if (isset($_SESSION['student_auth']) == "1") {
                         <!-- Card 2 -->
                         <div class="col-md-3 mx-md-2 my-2 py-3 d-flex bg-warning rounded d-flex flex-md-row justify-content-around">
                             <div>
-                                <h1 class="text-light">3</h1>
-                                <p class="text-light">Leaves</p>
+                                <h1 class="text-dark"><?php
+                                                        echo stats(4);
+                                                        ?></h1>
+                                <p class="text-dark">Leaves</p>
                             </div>
-                            <i class="fi fi-rr-edit"></i>
+                            <i class="fi fi-rr-edit text-dark"></i>
                         </div>
                     </div>
                     <div class="col-md-12">

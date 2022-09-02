@@ -43,15 +43,39 @@ if (isset($_SESSION['auth']) == "1") {
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT s.student_name, a.attendance_status FROM sms_attendance a, students s WHERE a.student_id = s.id AND a.attendance_status = 1 AND month(a.attendance_date) = '$lastMonth'";
+                                    $sql = "SELECT DISTINCT a.student_id, s.student_name, a.attendance_status FROM sms_attendance a, students s WHERE a.student_id = s.id AND a.attendance_status = 1 AND month(a.attendance_date) = '$lastMonth'";
                                     $result = mysqli_query($conn, $sql);
+
+                                    // $sql = "SELECT attendance_status FROM sms_attendance a, students s WHERE a.student_id = s.id AND ";
 
                                     $row = mysqli_query($conn, $sql);
                                     while($record = mysqli_fetch_assoc($row))
                                     {
+                                        $studentId = $record['student_id'];
+                                        $sql = "SELECT attendance_status FROM sms_attendance WHERE student_id = $studentId AND month(attendance_date) = '$lastMonth' AND attendance_status = 1";
+                                        $recordRow = mysqli_query($conn, $sql);
+                                        $attendanceNumber = mysqli_num_rows($recordRow);
+                                        
                                 ?>
                                         <tr>
-                                            <td scope="col"></td>
+                                            <td scope="col"><?php echo $record['student_name']; ?></td>
+                                            <td scope="col"><?php echo $attendanceNumber; ?></td>
+                                            <td scope="col">
+                                                <?php
+                                                if($attendanceNumber > 25)
+                                                    echo "A+";
+                                                else if($attendanceNumber > 20)
+                                                    echo "A";
+                                                else if($attendanceNumber > 15)
+                                                    echo "B";
+                                                else if($attendanceNumber > 10)
+                                                    echo "C";
+                                                else if($attendanceNumber > 4)
+                                                    echo "D";
+                                                else
+                                                    echo "F";
+                                                ?>
+                                            </td>
                                         </tr>
                                 <?php
                                     }

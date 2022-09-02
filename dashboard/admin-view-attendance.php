@@ -40,11 +40,8 @@ if (isset($_SESSION['auth']) == "1") {
     }
 
     if (isset($_POST['update-attendance'])) {
-
-
-       
     }
-     
+
     if (isset($_POST['attendance_edit'])) {
         $editAttendanceId = $_POST['attendance_id'];
         $sql = "SELECT * FROM sms_attendance WHERE attendance_id = $editAttendanceId";
@@ -54,10 +51,10 @@ if (isset($_SESSION['auth']) == "1") {
         $formOutput = '
         <form action="" class="ms-md-4 border border-alert p-2 rounded mt-3" method="POST">
             <h5>Edit Attendance</h5>
-            <input type="hidden" class="form-control" name="edit_attendance_id" id="attendance_id" value="'.$editAttendanceId.'">
+            <input type="hidden" class="form-control" name="edit_attendance_id" id="attendance_id" value="' . $editAttendanceId . '">
             <div class="d-flex align-items-center my-3">
                 <label for="attendance_date" class="form-label me-md-4">Date: </label>
-                <input type="date" class="form-control" name="edit_attendance_date" id="attendance_date" value="'.$record['attendance_date'].'" required>
+                <input type="date" class="form-control" name="edit_attendance_date" id="attendance_date" value="' . $record['attendance_date'] . '" required>
             </div>
             <div class="d-flex align-items-center my-3">
                 <label for="attendance_status" class="form-label me-md-4">Status</label>
@@ -82,7 +79,7 @@ if (isset($_SESSION['auth']) == "1") {
         $row = mysqli_query($conn, $sql);
         $formOutput = "";
     }
-    ?>
+?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -147,10 +144,6 @@ if (isset($_SESSION['auth']) == "1") {
                                     if (!mysqli_num_rows($dataRow) == 0) {
                                         while ($recordRow = mysqli_fetch_assoc($dataRow)) {
                                     ?>
-                                    
-                                    
-                                    // please check above site for dropdown code update..... Ahmad Noor 31 Aug 2022
-                                    //// https://stackoverflow.com/questions/50737788/populate-dropdown-from-database-and-set-default-value
 
                                             <tr>
                                                 <td><?php echo $recordRow['attendance_date']; ?></td>
